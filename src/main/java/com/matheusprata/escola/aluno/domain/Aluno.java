@@ -19,6 +19,8 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idAluno;
 
+    @Column(name = "cpf", unique = true, updatable = false)
+    private String cpf;
     @NotNull(message = "Campo Nome Obrigatório!")
     private String nomeCompleto;
     @NotNull(message = "turma Obrigatório")
@@ -30,19 +32,17 @@ public class Aluno {
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
     private LocalDate dataNascimento;
-    @Column(name = "cpf", unique = true, updatable = false)
-    private String cpf;
     @NotNull(message = "data matricula é obrigatória")
     private LocalDate dataMatricula;
 
     public Aluno(AlunoRequest alunoRequest) {
+        this.cpf = alunoRequest.getCpf();
         this.nomeCompleto = alunoRequest.getNomeCompleto().toUpperCase();
         this.turma = alunoRequest.getTurma().toUpperCase();
         this.email = alunoRequest.getEmail().toUpperCase();
         this.celular = alunoRequest.getCelular();
         this.sexo = alunoRequest.getSexo();
         this.dataNascimento = alunoRequest.getDataNascimento();
-        this.cpf = alunoRequest.getCpf();
         this.dataMatricula = alunoRequest.getDataMatricula();
     }
 }
