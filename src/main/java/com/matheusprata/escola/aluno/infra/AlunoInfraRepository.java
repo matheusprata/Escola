@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Log4j2
@@ -26,5 +27,13 @@ public class AlunoInfraRepository implements AlunoRepository {
         List<Aluno> alunos = alunoSpringDataJPARepository.findAll();
         log.info("[finaliza] AlunoInfraRepository - getAllAlunos");
         return alunos;
+    }
+
+    @Override
+    public Optional<Aluno> findByCpf(String cpf) {
+        log.info("[inicia] AlunoInfraRepository - findByCpf");
+        Optional<Aluno> alunoOptional = alunoSpringDataJPARepository.findByCpf(cpf);
+        log.info("[finaliza] AlunoInfraRepository - findByCpf");
+        return alunoOptional;
     }
 }

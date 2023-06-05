@@ -3,10 +3,13 @@ package com.matheusprata.escola.aluno.application.service;
 import com.matheusprata.escola.aluno.application.api.AlunoIdResponse;
 import com.matheusprata.escola.aluno.application.api.AlunoListResponse;
 import com.matheusprata.escola.aluno.application.api.AlunoRequest;
+import com.matheusprata.escola.aluno.application.api.AlunoResponse;
 import com.matheusprata.escola.aluno.application.repository.AlunoRepository;
 import com.matheusprata.escola.aluno.domain.Aluno;
+import com.matheusprata.escola.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +34,14 @@ public class AlunoApplicationService implements AlunoService{
         List<Aluno> alunos = alunoRepository.getAllAlunos();
         log.info("[finaliza] AlunoApplicationService - getAllAlunos");
         return AlunoListResponse.converte(alunos);
+    }
+
+    @Override
+    public AlunoResponse getByCpf(String cpf) {
+        log.info("[inicia] AlunoApplicationService - getByCpf");
+        Aluno aluno = alunoRepository.findByCpf(cpf)
+                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Cliente não encontrado!"));
+        log.info("[finaliza] AlunoApplicationService - getByCpf");
+        return new AlunoResponse(aluno);
     }
 }

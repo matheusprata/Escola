@@ -27,4 +27,12 @@ public class AlunoRestController implements AlunoApi{
         log.info("[finaliza] AlunoRestController - getAllAlunos");
         return alunos;
     }
+
+    @Override
+    public AlunoResponse getByCpf(String cpf) {
+        log.info("[inicia] AlunoRestController - getByCpf");
+        AlunoResponse getCpf = alunoService.getByCpf(cpf);
+        log.info("[finaliza] AlunoRestController - getByCpf");
+        return getCpf;
+    }
 }
