@@ -1,5 +1,7 @@
-package com.matheusprata.escola.aluno.application.api;
+package com.matheusprata.escola.aluno.domain;
 
+import com.matheusprata.escola.aluno.application.api.AlunoRequest;
+import com.matheusprata.escola.aluno.application.api.Sexo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -36,6 +38,7 @@ public class Aluno {
 
     public Aluno(AlunoRequest alunoRequest) {
         this.nomeCompleto = alunoRequest.getNomeCompleto().toUpperCase();
+        this.turma = alunoRequest.getTurma().toUpperCase();
         this.email = alunoRequest.getEmail().toUpperCase();
         this.celular = alunoRequest.getCelular();
         this.sexo = alunoRequest.getSexo();
