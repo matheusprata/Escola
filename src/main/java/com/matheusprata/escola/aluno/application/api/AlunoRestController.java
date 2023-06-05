@@ -4,6 +4,7 @@ import com.matheusprata.escola.aluno.application.service.AlunoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 @RestController
 @Log4j2
@@ -17,5 +18,13 @@ public class AlunoRestController implements AlunoApi{
         AlunoIdResponse alunoCadastrado = alunoService.saveAluno(alunoRequest);
         log.info("[finaliza] AlunoRestController - saveAluno");
         return alunoCadastrado;
+    }
+
+    @Override
+    public List<AlunoListResponse> getAllAlunos() {
+        log.info("[inicia] AlunoRestController - getAllAlunos");
+        List<AlunoListResponse> alunos = alunoService.getAllAlunos();
+        log.info("[finaliza] AlunoRestController - getAllAlunos");
+        return alunos;
     }
 }
