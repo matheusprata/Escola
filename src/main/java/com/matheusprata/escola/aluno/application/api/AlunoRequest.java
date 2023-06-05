@@ -1,5 +1,6 @@
 package com.matheusprata.escola.aluno.application.api;
 
+import com.matheusprata.escola.aluno.domain.Sexo;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
