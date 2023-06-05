@@ -6,6 +6,6 @@ import lombok.Value;
 import java.util.UUID;
 @Value
 @Builder
-public class alunoIdResponse {
-    UUID idPedido;
+public class AlunoIdResponse {
+    UUID idAluno;
 }

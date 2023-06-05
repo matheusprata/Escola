@@ -11,5 +11,5 @@ public interface AlunoApi{
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    alunoIdResponse saveAluno(@Valid @RequestBody AlunoRequest alunoRequest);
+    AlunoIdResponse saveAluno(@Valid @RequestBody AlunoRequest alunoRequest);
 }
