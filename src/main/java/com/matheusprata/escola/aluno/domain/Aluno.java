@@ -1,7 +1,6 @@
 package com.matheusprata.escola.aluno.domain;
 
 import com.matheusprata.escola.aluno.application.api.AlunoRequest;
-import com.matheusprata.escola.aluno.application.api.Sexo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
