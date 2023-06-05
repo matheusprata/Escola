@@ -5,6 +5,7 @@ import com.matheusprata.escola.aluno.domain.Aluno;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
 @Repository
 @Log4j2
@@ -17,5 +18,13 @@ public class AlunoInfraRepository implements AlunoRepository {
         alunoSpringDataJPARepository.save(aluno);
         log.info("[inicia] AlunoInfraRepository - saveAluno");
         return aluno;
+    }
+
+    @Override
+    public List<Aluno> getAllAlunos() {
+        log.info("[inicia] AlunoInfraRepository - getAllAlunos");
+        List<Aluno> alunos = alunoSpringDataJPARepository.findAll();
+        log.info("[finaliza] AlunoInfraRepository - getAllAlunos");
+        return alunos;
     }
 }
