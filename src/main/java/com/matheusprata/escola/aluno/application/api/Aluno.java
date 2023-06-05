@@ -33,4 +33,14 @@ public class Aluno {
     private String cpf;
     @NotNull(message = "data matricula é obrigatória")
     private LocalDate dataMatricula;
+
+    public Aluno(AlunoRequest alunoRequest) {
+        this.nomeCompleto = alunoRequest.getNomeCompleto().toUpperCase();
+        this.email = alunoRequest.getEmail().toUpperCase();
+        this.celular = alunoRequest.getCelular();
+        this.sexo = alunoRequest.getSexo();
+        this.dataNascimento = alunoRequest.getDataNascimento();
+        this.cpf = alunoRequest.getCpf();
+        this.dataMatricula = alunoRequest.getDataMatricula();
+    }
 }
