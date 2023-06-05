@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Aluno", description = "Aluno APIs")
 @RequestMapping("/v1/aluno")
-public class AlunoApi{
+public interface AlunoApi{
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
