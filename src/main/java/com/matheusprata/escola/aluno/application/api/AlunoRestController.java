@@ -35,4 +35,11 @@ public class AlunoRestController implements AlunoApi{
         log.info("[finaliza] AlunoRestController - getByCpf");
         return getCpf;
     }
+
+    @Override
+    public void updateAluno(String cpf, AlunoAlteracaoRequest alunoAlteracaoRequest) {
+        log.info("[inicia] AlunoRestController - updateAluno");
+        alunoService.updateAluno(cpf, alunoAlteracaoRequest);
+        log.info("[finaliza] AlunoRestController - updateAluno");
+    }
 }

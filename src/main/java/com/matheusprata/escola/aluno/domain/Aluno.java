@@ -1,5 +1,6 @@
 package com.matheusprata.escola.aluno.domain;
 
+import com.matheusprata.escola.aluno.application.api.AlunoAlteracaoRequest;
 import com.matheusprata.escola.aluno.application.api.AlunoRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -44,5 +45,12 @@ public class Aluno {
         this.sexo = alunoRequest.getSexo();
         this.dataNascimento = alunoRequest.getDataNascimento();
         this.dataMatricula = alunoRequest.getDataMatricula();
+    }
+
+    public void update(AlunoAlteracaoRequest alunoAlteracaoRequest) {
+        this.turma = alunoAlteracaoRequest.getTurma().toUpperCase();
+        this.email = alunoAlteracaoRequest.getEmail().toUpperCase();
+        this.celular = alunoAlteracaoRequest.getCelular();
+        this.dataNascimento = alunoAlteracaoRequest.getDataNascimento();
     }
 }
