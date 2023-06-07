@@ -12,18 +12,18 @@ import java.time.LocalDate;
 @Value
 public class AlunoRequest {
     @NotNull(message = "Campo Nome Obrigatório!")
-    private String nomeCompleto;
+    String nomeCompleto;
     @NotNull(message = "turma Obrigatório")
-    private String turma;
+    String turma;
     @Email
     @Column(unique = true)
-    private String email;
-    private String celular;
+    String email;
+    String celular;
     @Enumerated(EnumType.STRING)
-    private Sexo sexo;
-    private LocalDate dataNascimento;
+    Sexo sexo;
+    LocalDate dataNascimento;
     @Column(name = "cpf", unique = true, updatable = false)
-    private String cpf;
+    String cpf;
     @NotNull(message = "data matricula é obrigatória")
-    private LocalDate dataMatricula;
+    LocalDate dataMatricula;
 }
