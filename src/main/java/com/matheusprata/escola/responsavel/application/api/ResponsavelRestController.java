@@ -4,6 +4,7 @@ import com.matheusprata.escola.responsavel.application.service.ResponsavelServic
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -18,5 +19,13 @@ public class ResponsavelRestController implements ResponsavelApi{
         ResponsavelResponse responsavelCriado = responsavelService.saveResponsavel(idAluno, responsavelRequest);
         log.info("[finaliza] ResponsavelRestController - saveResponsavel");
         return responsavelCriado;
+    }
+
+    @Override
+    public List<ResponsavelListResponse> getAllResponsaveis() {
+        log.info("[inicia] ResponsavelRestController - getAllResponsaveis");
+        List<ResponsavelListResponse> responsaveis = responsavelService.getAllResponsaveis();
+        log.info("[finaliza] ResponsavelRestController - getAllResponsaveis");
+        return responsaveis;
     }
 }
