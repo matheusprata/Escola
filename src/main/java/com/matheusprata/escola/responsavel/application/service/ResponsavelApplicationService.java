@@ -2,6 +2,7 @@ package com.matheusprata.escola.responsavel.application.service;
 
 import com.matheusprata.escola.aluno.application.repository.AlunoRepository;
 import com.matheusprata.escola.aluno.domain.Aluno;
+import com.matheusprata.escola.responsavel.application.api.ResponsavelAlteracaoRequest;
 import com.matheusprata.escola.responsavel.application.api.ResponsavelListResponse;
 import com.matheusprata.escola.responsavel.application.api.ResponsavelRequest;
 import com.matheusprata.escola.responsavel.application.api.ResponsavelResponse;
@@ -36,5 +37,14 @@ public class ResponsavelApplicationService implements ResponsavelService{
         List<Responsavel> responsaveis = responsavelRepository.getAllResponsaveis();
         log.info("[finaliza] ResponsavelApplicationService - getAllResponsaveis");
         return ResponsavelListResponse.converte(responsaveis);
+    }
+
+    @Override
+    public void updateResponsavel(UUID idResponsavel, ResponsavelAlteracaoRequest responsavelAlteracaoRequest) {
+        log.info("[inicia] ResponsavelApplicationService - updateResponsavel");
+        Responsavel responsavel = responsavelRepository.getOneResponsavel(idResponsavel);
+        responsavel.update(responsavelAlteracaoRequest);
+        responsavelRepository.saveResponsavel(responsavel);
+        log.info("[finaliza] ResponsavelApplicationService - updateResponsavel");
     }
 }
