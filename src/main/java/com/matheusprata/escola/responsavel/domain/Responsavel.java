@@ -36,7 +36,6 @@ public class Responsavel {
     private Aluno aluno;
 
     public Responsavel(Aluno aluno, ResponsavelRequest responsavelRequest){
-        this.idResponsavel = responsavelRequest.getIdResponsavel();
         this.nomeCompleto = responsavelRequest.getNomeCompleto().toUpperCase();
         this.email = responsavelRequest.getEmail().toUpperCase();
         this.telefone = responsavelRequest.getTelefone();
