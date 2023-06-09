@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -18,4 +19,9 @@ public interface ResponsavelApi {
     @GetMapping("/all")
     @ResponseStatus(code = HttpStatus.OK)
     List<ResponsavelListResponse> getAllResponsaveis();
+
+    @PatchMapping(value = "/{idResponsavel}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void updateResponsavel(@RequestParam UUID idResponsavel,
+                     @Valid @RequestBody ResponsavelAlteracaoRequest responsavelAlteracaoRequest);
 }

@@ -2,6 +2,7 @@ package com.matheusprata.escola.responsavel.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.domain.Aluno;
+import com.matheusprata.escola.responsavel.application.api.ResponsavelAlteracaoRequest;
 import com.matheusprata.escola.responsavel.application.api.ResponsavelRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -9,6 +10,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -43,5 +45,13 @@ public class Responsavel {
         this.endereco = responsavelRequest.getEndereco().toUpperCase();
         this.cidade = responsavelRequest.getCidade().toUpperCase();
         this.aluno = aluno;
+    }
+
+    public void update(ResponsavelAlteracaoRequest responsavelAlteracaoRequest) {
+        this.email = responsavelAlteracaoRequest.getEmail().toUpperCase();
+        this.telefone = responsavelAlteracaoRequest.getTelefone();
+        this.cep = responsavelAlteracaoRequest.getCep();
+        this.endereco = responsavelAlteracaoRequest.getEndereco().toUpperCase();
+        this.cidade = responsavelAlteracaoRequest.getCidade().toUpperCase();
     }
 }
