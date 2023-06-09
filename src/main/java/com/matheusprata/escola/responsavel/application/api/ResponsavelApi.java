@@ -1,11 +1,9 @@
 package com.matheusprata.escola.responsavel.application.api;
 
-import com.matheusprata.escola.aluno.application.api.AlunoListResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.UUID;
 

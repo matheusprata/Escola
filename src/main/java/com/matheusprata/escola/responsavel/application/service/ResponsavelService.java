@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ResponsavelService {
-       ResponsavelResponse saveResponsavel(UUID idAluno, ResponsavelRequest responsavelRequest);
+    ResponsavelResponse saveResponsavel(UUID idAluno, ResponsavelRequest responsavelRequest);
     List<ResponsavelListResponse> getAllResponsaveis();
 }
