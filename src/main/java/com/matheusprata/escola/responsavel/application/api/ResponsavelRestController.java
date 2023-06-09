@@ -28,4 +28,11 @@ public class ResponsavelRestController implements ResponsavelApi{
         log.info("[finaliza] ResponsavelRestController - getAllResponsaveis");
         return responsaveis;
     }
+
+    @Override
+    public void updateResponsavel(UUID idResponsavel, ResponsavelAlteracaoRequest responsavelAlteracaoRequest) {
+        log.info("[inicia] ResponsavelRestController - updateResponsavel");
+        responsavelService.updateResponsavel(idResponsavel, responsavelAlteracaoRequest);
+        log.info("[finaliza] ResponsavelRestController - updateResponsavel");
+    }
 }
