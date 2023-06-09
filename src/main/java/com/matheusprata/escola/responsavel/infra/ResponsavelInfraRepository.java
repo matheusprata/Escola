@@ -5,6 +5,7 @@ import com.matheusprata.escola.responsavel.domain.Responsavel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -18,5 +19,13 @@ public class ResponsavelInfraRepository implements ResponsavelRepository {
         Responsavel responsavelCriado = responsavelSpringDataJPARepository.save(responsavel);
         log.info("[finaliza] ResponsavelInfraRepository - saveResponsavel");
         return responsavelCriado;
+    }
+
+    @Override
+    public List<Responsavel> getAllResponsaveis() {
+        log.info("[inicia] ResponsavelInfraRepository - getAllResponsavel");
+        List<Responsavel> responsaveis = responsavelSpringDataJPARepository.findAll();
+        log.info("[finaliza] ResponsavelInfraRepository - getAllResponsavel");
+        return responsaveis;
     }
 }
