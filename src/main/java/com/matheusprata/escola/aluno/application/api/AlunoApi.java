@@ -14,7 +14,7 @@ public interface AlunoApi{
     @ResponseStatus(code = HttpStatus.CREATED)
     AlunoIdResponse saveAluno(@Valid @RequestBody AlunoRequest alunoRequest);
 
-    @GetMapping("/all")
+    @GetMapping(value = "/all")
     @ResponseStatus(code = HttpStatus.OK)
     List<AlunoListResponse> getAllAlunos();
 
