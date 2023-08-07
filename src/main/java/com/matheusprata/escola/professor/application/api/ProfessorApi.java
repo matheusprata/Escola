@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Tag(name = "Professor", description = "Professor APIs")
 @RequestMapping("/v1/professor")
@@ -18,4 +19,8 @@ public interface ProfessorApi {
     @GetMapping("/all")
     @ResponseStatus(code = HttpStatus.OK)
     List<ProfessorListResponse> getAllProfessores();
+
+    @GetMapping(value = "/{idProfessor}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ProfessorDetalhadoResponse getOneProfessor(@PathVariable UUID idProfessor);
 }
