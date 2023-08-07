@@ -1,5 +1,6 @@
 package com.matheusprata.escola.turma.domain;
 
+import com.matheusprata.escola.turma.application.api.TurmaRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,5 +20,12 @@ public class Turma {
     private Turno turno;
     @Enumerated(EnumType.STRING)
     private HorarioAula horario;
-    private String ano;
+    private Integer ano;
+
+    public Turma(TurmaRequest turmaRequest) {
+        this.sala = turmaRequest.getSala();
+        this.turno = turmaRequest.getTurno();
+        this.horario = turmaRequest.getHorario();
+        this.ano = turmaRequest.getAno();
+    }
 }
