@@ -37,4 +37,11 @@ public class ProfessorRestController implements ProfessorApi{
         log.info("[finaliza] ProfessorRestController - getOneProfessor");
         return response;
     }
+
+    @Override
+    public void updateProfessor(UUID idProfessor, ProfessorAlteracaoRequest professorAlteracaoRequest) {
+        log.info("[inicia] ProfessorRestController - updateProfessor");
+        professorService.updateProfessor(idProfessor, professorAlteracaoRequest);
+        log.info("[finaliza] ProfessorRestController - updateProfessor");
+    }
 }
