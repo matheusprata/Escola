@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
@@ -36,5 +38,12 @@ public class ProfessorInfraRepository implements ProfessorRepository {
         return todosProfessores;
     }
 
-
+    @Override
+    public Professor getOneProfessor(UUID idProfessor) {
+        log.info("[inicia] ProfessorInfraRepository - getOneProfessor");
+        Professor professor = professorSpringDataJPARepository.findById(idProfessor)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Professor não encontrado!"));
+        log.info("[finaliza] ProfessorInfraRepository - getOneProfessor");
+        return professor;
+    }
 }
