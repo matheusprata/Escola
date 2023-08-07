@@ -1,5 +1,6 @@
 package com.matheusprata.escola.professor.application.service;
 
+import com.matheusprata.escola.professor.application.api.ProfessorDetalhadoResponse;
 import com.matheusprata.escola.professor.application.api.ProfessorIdResponse;
 import com.matheusprata.escola.professor.application.api.ProfessorListResponse;
 import com.matheusprata.escola.professor.application.api.ProfessorRequest;
@@ -10,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +33,13 @@ public class ProfessorApplicationService implements ProfessorService{
         List<Professor> professores = professorRepository.getAllProfessores();
         log.info("[finaliza] ProfessorApplicationService - getAllProfessores");
         return ProfessorListResponse.converte(professores);
+    }
+
+    @Override
+    public ProfessorDetalhadoResponse getOneProfessor(UUID idProfessor) {
+        log.info("[inicia] ProfessorApplicationService - getOneProfessor");
+        Professor professor = professorRepository.getOneProfessor(idProfessor);
+        log.info("[finaliza] ProfessorApplicationService - getOneProfessor");
+        return new ProfessorDetalhadoResponse(professor);
     }
 }
