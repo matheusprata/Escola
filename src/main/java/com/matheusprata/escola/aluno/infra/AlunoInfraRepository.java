@@ -5,6 +5,7 @@ import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -20,7 +21,11 @@ public class AlunoInfraRepository implements AlunoRepository {
     @Override
     public Aluno saveAluno(Aluno aluno) {
         log.info("[inicia] AlunoInfraRepository - saveAluno");
-        alunoSpringDataJPARepository.save(aluno);
+        try{
+            alunoSpringDataJPARepository.save(aluno);
+        }catch (DataIntegrityViolationException e){
+            throw APIException.build(HttpStatus.BAD_REQUEST, "Aluno já cadastrado", e);
+        }
         log.info("[inicia] AlunoInfraRepository - saveAluno");
         return aluno;
     }
