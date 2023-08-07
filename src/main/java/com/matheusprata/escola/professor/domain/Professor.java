@@ -29,6 +29,8 @@ public class Professor {
     @Column(unique = true)
     String email;
     String celular;
+    @NotNull(message = "formacao Obrigatório")
+    String formacao;
 
     public Professor(ProfessorRequest professorRequest){
         this.cpf = professorRequest.getCpf();
@@ -36,6 +38,7 @@ public class Professor {
         this.turma = professorRequest.getTurma();
         this.email = professorRequest.getEmail();
         this.celular = professorRequest.getCelular();
+        this.formacao = professorRequest.getFormacao();
     }
 
     public void update(ProfessorAlteracaoRequest professorAlteracaoRequest) {
@@ -43,5 +46,6 @@ public class Professor {
         this.turma = professorAlteracaoRequest.getTurma();
         this.email = professorAlteracaoRequest.getEmail();
         this.celular = professorAlteracaoRequest.getCelular();
+        this.formacao = professorAlteracaoRequest.getFormacao();
     }
 }

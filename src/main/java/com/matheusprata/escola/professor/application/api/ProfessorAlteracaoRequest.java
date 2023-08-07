@@ -8,4 +8,5 @@ public class ProfessorAlteracaoRequest {
     String turma;
     String email;
     String celular;
+    String formacao;
 }

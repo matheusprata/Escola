@@ -16,4 +16,5 @@ public class ProfessorRequest {
     @Column(unique = true)
     String email;
     String celular;
+    String formacao;
 }

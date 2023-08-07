@@ -12,6 +12,7 @@ public class ProfessorDetalhadoResponse {
     String turma;
     String email;
     String celular;
+    String formacao;
 
     public ProfessorDetalhadoResponse (Professor professor){
         this.idProfessor = professor.getIdProfessor();
@@ -20,5 +21,6 @@ public class ProfessorDetalhadoResponse {
         this.turma = professor.getTurma();
         this.email = professor.getEmail();
         this.celular = professor.getCelular();
+        this.formacao = professor.getFormacao();
     }
 }
