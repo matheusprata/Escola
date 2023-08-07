@@ -1,11 +1,9 @@
 package com.matheusprata.escola.responsavel.application.service;
 
+import com.matheusprata.escola.aluno.application.api.AlunoResponsavelResponse;
 import com.matheusprata.escola.aluno.application.repository.AlunoRepository;
 import com.matheusprata.escola.aluno.domain.Aluno;
-import com.matheusprata.escola.responsavel.application.api.ResponsavelAlteracaoRequest;
-import com.matheusprata.escola.responsavel.application.api.ResponsavelListResponse;
-import com.matheusprata.escola.responsavel.application.api.ResponsavelRequest;
-import com.matheusprata.escola.responsavel.application.api.ResponsavelResponse;
+import com.matheusprata.escola.responsavel.application.api.*;
 import com.matheusprata.escola.responsavel.application.repository.ResponsavelRepository;
 import com.matheusprata.escola.responsavel.domain.Responsavel;
 import lombok.RequiredArgsConstructor;
@@ -46,5 +44,13 @@ public class ResponsavelApplicationService implements ResponsavelService{
         responsavel.update(responsavelAlteracaoRequest);
         responsavelRepository.saveResponsavel(responsavel);
         log.info("[finaliza] ResponsavelApplicationService - updateResponsavel");
+    }
+
+    @Override
+    public AlunoResponsavelResponse getAllResponsaveisAlunos(UUID idAluno) {
+        log.info("[inicia] ResponsavelApplicationService - getAllResponsaveisAlunos");
+        Aluno aluno = alunoRepository.getOneAluno(idAluno);
+        log.info("[finaliza] ResponsavelApplicationService - getAllResponsaveisAlunos");
+        return new AlunoResponsavelResponse(aluno);
     }
 }
