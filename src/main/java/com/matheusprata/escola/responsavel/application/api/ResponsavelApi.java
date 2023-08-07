@@ -1,5 +1,6 @@
 package com.matheusprata.escola.responsavel.application.api;
 
+import com.matheusprata.escola.aluno.application.api.AlunoResponsavelResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,10 @@ public interface ResponsavelApi {
     @GetMapping("/all")
     @ResponseStatus(code = HttpStatus.OK)
     List<ResponsavelListResponse> getAllResponsaveis();
+
+    @GetMapping("/aluno/{idAluno}")
+    @ResponseStatus(code = HttpStatus.OK)
+    AlunoResponsavelResponse getAllResponsaveisAlunos(@PathVariable UUID idAluno);
 
     @PatchMapping(value = "/{idResponsavel}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
