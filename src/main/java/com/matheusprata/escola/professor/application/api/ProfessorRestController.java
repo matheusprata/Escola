@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -27,5 +28,13 @@ public class ProfessorRestController implements ProfessorApi{
         List<ProfessorListResponse> professores = professorService.getAllProfessores();
         log.info("[inicia] ProfessorRestController - getAllProfessores");
         return professores;
+    }
+
+    @Override
+    public ProfessorDetalhadoResponse getOneProfessor(UUID idProfessor) {
+        log.info("[inicia] ProfessorRestController - getOneProfessor");
+        ProfessorDetalhadoResponse response = professorService.getOneProfessor(idProfessor);
+        log.info("[finaliza] ProfessorRestController - getOneProfessor");
+        return response;
     }
 }
