@@ -1,13 +1,12 @@
 package com.matheusprata.escola.professor.application.service;
 
-import com.matheusprata.escola.professor.application.api.ProfessorDetalhadoResponse;
-import com.matheusprata.escola.professor.application.api.ProfessorIdResponse;
-import com.matheusprata.escola.professor.application.api.ProfessorListResponse;
-import com.matheusprata.escola.professor.application.api.ProfessorRequest;
+import com.matheusprata.escola.handler.APIException;
+import com.matheusprata.escola.professor.application.api.*;
 import com.matheusprata.escola.professor.application.repository.ProfessorRepository;
 import com.matheusprata.escola.professor.domain.Professor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,5 +40,14 @@ public class ProfessorApplicationService implements ProfessorService{
         Professor professor = professorRepository.getOneProfessor(idProfessor);
         log.info("[finaliza] ProfessorApplicationService - getOneProfessor");
         return new ProfessorDetalhadoResponse(professor);
+    }
+
+    @Override
+    public void updateProfessor(UUID idProfessor, ProfessorAlteracaoRequest professorAlteracaoRequest) {
+        log.info("[inicia] ProfessorApplicationService - updateProfessor");
+        Professor professor = professorRepository.getOneProfessor(idProfessor);
+        professor.update(professorAlteracaoRequest);
+        professorRepository.saveProfessor(professor);
+        log.info("[finaliza] ProfessorApplicationService - updateProfessor");
     }
 }
