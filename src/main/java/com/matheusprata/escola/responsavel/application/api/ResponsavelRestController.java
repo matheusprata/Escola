@@ -1,5 +1,6 @@
 package com.matheusprata.escola.responsavel.application.api;
 
+import com.matheusprata.escola.aluno.application.api.AlunoResponsavelResponse;
 import com.matheusprata.escola.responsavel.application.service.ResponsavelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -27,6 +28,14 @@ public class ResponsavelRestController implements ResponsavelApi{
         List<ResponsavelListResponse> responsaveis = responsavelService.getAllResponsaveis();
         log.info("[finaliza] ResponsavelRestController - getAllResponsaveis");
         return responsaveis;
+    }
+
+    @Override
+    public AlunoResponsavelResponse getAllResponsaveisAlunos(UUID idAluno) {
+        log.info("[inicia] ResponsavelRestController - getAllResponsaveisAlunos");
+        AlunoResponsavelResponse response = responsavelService.getAllResponsaveisAlunos(idAluno);
+        log.info("[finaliza] ResponsavelRestController - getAllResponsaveisAlunos");
+        return response;
     }
 
     @Override

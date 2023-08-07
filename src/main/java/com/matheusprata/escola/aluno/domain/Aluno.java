@@ -1,7 +1,9 @@
 package com.matheusprata.escola.aluno.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.application.api.AlunoAlteracaoRequest;
 import com.matheusprata.escola.aluno.application.api.AlunoRequest;
+import com.matheusprata.escola.responsavel.domain.Responsavel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -9,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -35,6 +38,10 @@ public class Aluno {
     private LocalDate dataNascimento;
     @NotNull(message = "data matricula é obrigatória")
     private LocalDate dataMatricula;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
+    @JsonIgnore
+    List<Responsavel> responsavel;
 
     public Aluno(AlunoRequest alunoRequest) {
         this.cpf = alunoRequest.getCpf();
