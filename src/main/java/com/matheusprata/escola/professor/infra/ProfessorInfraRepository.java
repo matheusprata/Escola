@@ -9,6 +9,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 @Log4j2
@@ -25,4 +27,14 @@ public class ProfessorInfraRepository implements ProfessorRepository {
         log.info("[finaliza] ProfessorInfraRepository - saveProfessor");
         return professor;
     }
+
+    @Override
+    public List<Professor> getAllProfessores() {
+        log.info("[inicia] ProfessorInfraRepository - getAllProfessores");
+        List<Professor> todosProfessores = professorSpringDataJPARepository.findAll();
+        log.info("[finaliza] ProfessorInfraRepository - getAllProfessores");
+        return todosProfessores;
+    }
+
+
 }
