@@ -23,4 +23,9 @@ public interface ProfessorApi {
     @GetMapping(value = "/{idProfessor}")
     @ResponseStatus(code = HttpStatus.OK)
     ProfessorDetalhadoResponse getOneProfessor(@PathVariable UUID idProfessor);
+
+    @PatchMapping(value = "/{idProfessor}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void updateProfessor(@PathVariable UUID idProfessor,
+                         @Valid @RequestBody ProfessorAlteracaoRequest professorAlteracaoRequest);
 }

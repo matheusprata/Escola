@@ -1,5 +1,6 @@
 package com.matheusprata.escola.professor.domain;
 
+import com.matheusprata.escola.professor.application.api.ProfessorAlteracaoRequest;
 import com.matheusprata.escola.professor.application.api.ProfessorRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -35,5 +36,12 @@ public class Professor {
         this.turma = professorRequest.getTurma();
         this.email = professorRequest.getEmail();
         this.celular = professorRequest.getCelular();
+    }
+
+    public void update(ProfessorAlteracaoRequest professorAlteracaoRequest) {
+        this.nomeCompleto = professorAlteracaoRequest.getNomeCompleto();
+        this.turma = professorAlteracaoRequest.getTurma();
+        this.email = professorAlteracaoRequest.getEmail();
+        this.celular = professorAlteracaoRequest.getCelular();
     }
 }
