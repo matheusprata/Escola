@@ -5,6 +5,7 @@ import com.matheusprata.escola.responsavel.application.repository.ResponsavelRep
 import com.matheusprata.escola.responsavel.domain.Responsavel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
@@ -21,9 +22,13 @@ public class ResponsavelInfraRepository implements ResponsavelRepository {
     @Override
     public Responsavel saveResponsavel(Responsavel responsavel) {
         log.info("[inicia] ResponsavelInfraRepository - saveResponsavel");
-        Responsavel responsavelCriado = responsavelSpringDataJPARepository.save(responsavel);
+        try{
+            responsavelSpringDataJPARepository.save(responsavel);
+        }catch (DataIntegrityViolationException e){
+            throw APIException.build(HttpStatus.BAD_REQUEST, "Responsavel já cadastrado", e);
+        }
         log.info("[finaliza] ResponsavelInfraRepository - saveResponsavel");
-        return responsavelCriado;
+        return responsavel;
     }
 
     @Override
