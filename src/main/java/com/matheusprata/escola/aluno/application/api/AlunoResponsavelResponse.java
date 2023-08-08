@@ -14,7 +14,6 @@ public class AlunoResponsavelResponse {
     UUID idAluno;
     String cpf;
     String nomeCompleto;
-    String turma;
     String email;
     String celular;
     Sexo sexo;
@@ -26,7 +25,6 @@ public class AlunoResponsavelResponse {
         this.idAluno = aluno.getIdAluno();
         this.cpf = aluno.getCpf();
         this.nomeCompleto = aluno.getNomeCompleto();
-        this.turma = aluno.getTurma();
         this.email = aluno.getEmail();
         this.celular = aluno.getCelular();
         this.sexo = aluno.getSexo();

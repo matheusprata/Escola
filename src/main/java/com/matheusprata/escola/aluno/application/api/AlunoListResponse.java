@@ -13,7 +13,6 @@ public class AlunoListResponse {
     UUID idAluno;
     String cpf;
     String nomeCompleto;
-    String turma;
     String email;
     String celular;
     Sexo sexo;
@@ -30,7 +29,6 @@ public class AlunoListResponse {
         this.idAluno = aluno.getIdAluno();
         this.cpf = aluno.getCpf();
         this.nomeCompleto = aluno.getNomeCompleto();
-        this.turma = aluno.getTurma();
         this.email = aluno.getEmail();
         this.celular = aluno.getCelular();
         this.sexo = aluno.getSexo();

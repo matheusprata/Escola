@@ -22,7 +22,7 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProfessor;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "professor")
+    @ManyToMany
     @JsonIgnore
     List<Turma> turmas;
 

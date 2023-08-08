@@ -13,8 +13,6 @@ import java.time.LocalDate;
 public class AlunoRequest {
     @NotNull(message = "Campo Nome Obrigatório!")
     String nomeCompleto;
-    @NotNull(message = "turma Obrigatório")
-    String turma;
     @Email
     @Column(unique = true)
     String email;

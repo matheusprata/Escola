@@ -24,7 +24,7 @@ public class Turma {
     @JsonIgnore
     List<Aluno> alunos;
 
-    @ManyToOne
+    @ManyToMany(mappedBy="turmas" , cascade = CascadeType.ALL)
     @JsonIgnore
     List<Professor> professores;
 
@@ -37,7 +37,7 @@ public class Turma {
     private Integer ano;
 
     public Turma(TurmaRequest turmaRequest) {
-        this.turma = turmaRequest.getSerie();
+        this.turma = turmaRequest.getTurma();
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();
         this.horario = turmaRequest.getHorario();
