@@ -1,10 +1,15 @@
 package com.matheusprata.escola.turma.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.matheusprata.escola.aluno.domain.Aluno;
+import com.matheusprata.escola.professor.domain.Professor;
 import com.matheusprata.escola.turma.application.api.TurmaRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +20,15 @@ public class Turma {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idTurma;
 
+    @OneToMany
+    @JsonIgnore
+    List<Aluno> alunos;
+
+    @ManyToOne
+    @JsonIgnore
+    List<Professor> professores;
+
+    private String turma;
     private String sala;
     @Enumerated(EnumType.STRING)
     private Turno turno;
@@ -23,6 +37,7 @@ public class Turma {
     private Integer ano;
 
     public Turma(TurmaRequest turmaRequest) {
+        this.turma = turmaRequest.getSerie();
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();
         this.horario = turmaRequest.getHorario();

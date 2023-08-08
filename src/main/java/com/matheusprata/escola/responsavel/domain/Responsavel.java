@@ -22,6 +22,11 @@ public class Responsavel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idResponsavel;
 
+    @ManyToOne
+    @JoinColumn(name = "aluno_id")
+    @JsonIgnore
+    private Aluno aluno;
+
     @NotNull(message = "Campo Nome Obrigatório!")
     private String nomeCompleto;
     @Email
@@ -32,10 +37,6 @@ public class Responsavel {
     private String endereco;
     private String cidade;
 
-    @ManyToOne
-    @JoinColumn(name = "aluno_id")
-    @JsonIgnore
-    private Aluno aluno;
 
     public Responsavel(Aluno aluno, ResponsavelRequest responsavelRequest){
         this.nomeCompleto = responsavelRequest.getNomeCompleto().toUpperCase();

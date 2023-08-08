@@ -1,7 +1,9 @@
 package com.matheusprata.escola.professor.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.professor.application.api.ProfessorAlteracaoRequest;
 import com.matheusprata.escola.professor.application.api.ProfessorRequest;
+import com.matheusprata.escola.turma.domain.Turma;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -9,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +21,10 @@ public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProfessor;
+
+    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "professor")
+    @JsonIgnore
+    List<Turma> turmas;
 
     @Column(name = "cpf", unique = true, updatable = false)
     String cpf;

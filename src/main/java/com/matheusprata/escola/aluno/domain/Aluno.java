@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.application.api.AlunoAlteracaoRequest;
 import com.matheusprata.escola.aluno.application.api.AlunoRequest;
 import com.matheusprata.escola.responsavel.domain.Responsavel;
+import com.matheusprata.escola.turma.domain.Turma;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -23,12 +24,19 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idAluno;
 
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
+    @JsonIgnore
+    List<Responsavel> responsavel;
+
+    @ManyToOne
+    @JoinColumn(name = "turma_id")
+    @JsonIgnore
+    private Turma turma;
+
     @Column(name = "cpf", unique = true, updatable = false)
     private String cpf;
     @NotNull(message = "Campo Nome Obrigatório!")
     private String nomeCompleto;
-    @NotNull(message = "turma Obrigatório")
-    private String turma;
     @Email
     @Column(unique = true)
     private String email;
@@ -39,14 +47,9 @@ public class Aluno {
     @NotNull(message = "data matricula é obrigatória")
     private LocalDate dataMatricula;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
-    @JsonIgnore
-    List<Responsavel> responsavel;
-
     public Aluno(AlunoRequest alunoRequest) {
         this.cpf = alunoRequest.getCpf();
         this.nomeCompleto = alunoRequest.getNomeCompleto().toUpperCase();
-        this.turma = alunoRequest.getTurma().toUpperCase();
         this.email = alunoRequest.getEmail().toUpperCase();
         this.celular = alunoRequest.getCelular();
         this.sexo = alunoRequest.getSexo();
@@ -55,7 +58,6 @@ public class Aluno {
     }
 
     public void update(AlunoAlteracaoRequest alunoAlteracaoRequest) {
-        this.turma = alunoAlteracaoRequest.getTurma().toUpperCase();
         this.email = alunoAlteracaoRequest.getEmail().toUpperCase();
         this.celular = alunoAlteracaoRequest.getCelular();
         this.dataNascimento = alunoAlteracaoRequest.getDataNascimento();
