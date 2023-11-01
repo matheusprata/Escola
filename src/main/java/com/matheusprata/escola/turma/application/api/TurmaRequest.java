@@ -8,8 +8,8 @@ import java.util.UUID;
 
 @Value
 public class TurmaRequest {
-    UUID idProfessor;
     UUID idAluno;
+    UUID idProfessor;
     String turma;
     String sala;
     Turno turno;

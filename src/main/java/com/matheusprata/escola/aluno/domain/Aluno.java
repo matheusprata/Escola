@@ -47,7 +47,8 @@ public class Aluno {
     @NotNull(message = "data matricula é obrigatória")
     private LocalDate dataMatricula;
 
-    public Aluno(AlunoRequest alunoRequest) {
+    public Aluno(AlunoRequest alunoRequest, Turma turma) {
+        this.turma = turma;
         this.cpf = alunoRequest.getCpf();
         this.nomeCompleto = alunoRequest.getNomeCompleto().toUpperCase();
         this.email = alunoRequest.getEmail().toUpperCase();

@@ -22,11 +22,13 @@ public class Turma {
 
     @OneToMany
     @JsonIgnore
-    List<Aluno> alunos;
+    private List<Aluno> alunos;
 
-    @ManyToMany(mappedBy="turmas" , cascade = CascadeType.ALL)
-    @JsonIgnore
-    List<Professor> professores;
+    @ManyToMany
+    @JoinTable
+            (name = "turma_professor", joinColumns = @JoinColumn(name = "idTurma"),
+            inverseJoinColumns = @JoinColumn(name = "idProfessor"))
+    private List<Professor> professores;
 
     private String turma;
     private String sala;
@@ -36,7 +38,9 @@ public class Turma {
     private HorarioAula horario;
     private Integer ano;
 
-    public Turma(TurmaRequest turmaRequest) {
+    public Turma(TurmaRequest turmaRequest, Aluno alunos, Professor professores) {
+        this.alunos = (List<Aluno>) alunos;
+        this.professores = (List<Professor>) professores;
         this.turma = turmaRequest.getTurma();
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();

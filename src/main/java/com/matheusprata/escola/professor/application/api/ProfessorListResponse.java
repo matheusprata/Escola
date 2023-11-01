@@ -11,12 +11,10 @@ import java.util.stream.Collectors;
 public class ProfessorListResponse {
     UUID idProfessor;
     String nomeCompleto;
-    String turma;
 
     public ProfessorListResponse (Professor professor){
         this.idProfessor = professor.getIdProfessor();
         this.nomeCompleto = professor.getNomeCompleto();
-        this.turma = professor.getTurma();
     }
     public static List<ProfessorListResponse> converte(List<Professor>professores){
         return professores.stream()

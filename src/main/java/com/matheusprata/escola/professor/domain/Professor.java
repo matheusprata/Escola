@@ -22,27 +22,24 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProfessor;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "professores")
     @JsonIgnore
-    List<Turma> turmas;
+    private List<Turma> turmas;
 
     @Column(name = "cpf", unique = true, updatable = false)
-    String cpf;
+    private String cpf;
     @NotNull(message = "Campo Nome Obrigatório!")
-    String nomeCompleto;
-    @NotNull(message = "turma Obrigatório")
-    String turma;
+    private String nomeCompleto;
     @Email
     @Column(unique = true)
-    String email;
-    String celular;
+    private String email;
+    private String celular;
     @NotNull(message = "formacao Obrigatório")
-    String formacao;
+    private String formacao;
 
     public Professor(ProfessorRequest professorRequest){
         this.cpf = professorRequest.getCpf();
         this.nomeCompleto = professorRequest.getNomeCompleto();
-        this.turma = professorRequest.getTurma();
         this.email = professorRequest.getEmail();
         this.celular = professorRequest.getCelular();
         this.formacao = professorRequest.getFormacao();
@@ -50,7 +47,6 @@ public class Professor {
 
     public void update(ProfessorAlteracaoRequest professorAlteracaoRequest) {
         this.nomeCompleto = professorAlteracaoRequest.getNomeCompleto();
-        this.turma = professorAlteracaoRequest.getTurma();
         this.email = professorAlteracaoRequest.getEmail();
         this.celular = professorAlteracaoRequest.getCelular();
         this.formacao = professorAlteracaoRequest.getFormacao();
