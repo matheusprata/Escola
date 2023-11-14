@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.application.api.AlunoAlteracaoRequest;
 import com.matheusprata.escola.aluno.application.api.AlunoRequest;
 import com.matheusprata.escola.responsavel.domain.Responsavel;
+import com.matheusprata.escola.turma.domain.Turma;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -22,6 +23,10 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idAluno;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
+    @JsonIgnore
+    List<Turma> turmas;
 
     @Column(name = "cpf", unique = true, updatable = false)
     private String cpf;
