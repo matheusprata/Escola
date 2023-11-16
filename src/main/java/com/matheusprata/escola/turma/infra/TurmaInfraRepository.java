@@ -8,6 +8,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Log4j2
@@ -23,7 +25,31 @@ public class TurmaInfraRepository implements TurmaRepository {
         }catch (DataIntegrityViolationException e){
             throw APIException.build(HttpStatus.BAD_REQUEST, "Turma já cadastrada", e);
         }
-        log.info("[inicia] TurmaInfraRepository - saveTurma");
+        log.info("[finaliza] TurmaInfraRepository - saveTurma");
         return turma;
+    }
+
+    @Override
+    public List<Turma> getAllTurmas() {
+        log.info("[inicia] TurmaInfraRepository - saveTurma");
+        List<Turma> turmas = turmaSpringDataJPARepository.findAll();
+        log.info("[finaliza] TurmaInfraRepository - saveTurma");
+        return turmas;
+    }
+
+    @Override
+    public List<Turma> findAllByAno(Integer ano) {
+        log.info("[inicia] TurmaInfraRepository - getAno");
+        List<Turma> turmas = turmaSpringDataJPARepository.findAllByAno(ano);
+        log.info("[finaliza] TurmaInfraRepository - getAno");
+        return turmas;
+    }
+
+    @Override
+    public Optional<Turma> findById(Long idTurma) {
+        log.info("[inicia] TurmaInfraRepository - findById");
+        Optional<Turma> turmaOptional = turmaSpringDataJPARepository.findById(idTurma);
+        log.info("[finaliza] TurmaInfraRepository - findById");
+        return turmaOptional;
     }
 }

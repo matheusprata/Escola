@@ -3,6 +3,7 @@ package com.matheusprata.escola.turma.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.professor.domain.Professor;
+import com.matheusprata.escola.turma.application.api.TurmaAlteracaoRequest;
 import com.matheusprata.escola.turma.application.api.TurmaRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,31 +21,33 @@ public class Turma {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idTurma;
 
-    @OneToMany
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aluno_id")
     @JsonIgnore
-    private List<Aluno> alunos;
+    private Aluno aluno;
 
-    @ManyToMany
-    @JoinTable
-            (name = "turma_professor", joinColumns = @JoinColumn(name = "idTurma"),
-            inverseJoinColumns = @JoinColumn(name = "idProfessor"))
-    private List<Professor> professores;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "professor_id")
+    @JsonIgnore
+    private Professor professor;
 
     private String turma;
     private String sala;
     @Enumerated(EnumType.STRING)
     private Turno turno;
-    @Enumerated(EnumType.STRING)
-    private HorarioAula horario;
     private Integer ano;
 
-    public Turma(TurmaRequest turmaRequest, Aluno alunos, Professor professores) {
-        this.alunos = (List<Aluno>) alunos;
-        this.professores = (List<Professor>) professores;
+    public Turma(TurmaRequest turmaRequest) {
         this.turma = turmaRequest.getTurma();
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();
-        this.horario = turmaRequest.getHorario();
+        this.ano = turmaRequest.getAno();
+    }
+
+    public void update(TurmaAlteracaoRequest turmaRequest) {
+        this.turma = turmaRequest.getTurma();
+        this.sala = turmaRequest.getSala();
+        this.turno = turmaRequest.getTurno();
         this.ano = turmaRequest.getAno();
     }
 }

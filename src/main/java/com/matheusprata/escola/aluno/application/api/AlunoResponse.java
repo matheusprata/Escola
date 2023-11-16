@@ -18,6 +18,7 @@ public class AlunoResponse {
         LocalDate dataNascimento;
         LocalDate dataMatricula;
 
+    //somente informações do aluno
     public AlunoResponse(Aluno aluno) {
         this.idAluno = aluno.getIdAluno();
         this.cpf = aluno.getCpf();

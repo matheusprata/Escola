@@ -48,6 +48,6 @@ public class AlunoApplicationService implements AlunoService{
                 .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Cliente não encontrado!"));
         aluno.update(alunoAlteracaoRequest);
         alunoRepository.saveAluno(aluno);
-        log.info("[inicia] AlunoApplicationService - updateAluno");
+        log.info("[finaliza] AlunoApplicationService - updateAluno");
     }
 }

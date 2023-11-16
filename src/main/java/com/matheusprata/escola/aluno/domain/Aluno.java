@@ -26,12 +26,11 @@ public class Aluno {
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
     @JsonIgnore
-    List<Responsavel> responsavel;
+    List<Responsavel> responsaveis;
 
-    @ManyToOne
-    @JoinColumn(name = "turma_id")
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
     @JsonIgnore
-    private Turma turma;
+    List<Turma> turmas;
 
     @Column(name = "cpf", unique = true, updatable = false)
     private String cpf;
