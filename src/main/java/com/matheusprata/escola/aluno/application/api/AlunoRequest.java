@@ -25,6 +25,4 @@ public class AlunoRequest {
     String cpf;
     @NotNull(message = "data matricula é obrigatória")
     LocalDate dataMatricula;
-
-    Turma turma;
 }

@@ -22,7 +22,7 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProfessor;
 
-    @ManyToMany(mappedBy = "professores")
+    @ManyToMany(mappedBy = "professor")
     @JsonIgnore
     private List<Turma> turmas;
 

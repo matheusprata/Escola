@@ -1,7 +1,5 @@
 package com.matheusprata.escola.turma.application.service;
 
-
-import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.handler.APIException;
 import com.matheusprata.escola.turma.application.api.*;
 import com.matheusprata.escola.turma.application.repository.TurmaRepository;
@@ -25,7 +23,6 @@ public class TurmaApplicationService implements TurmaService{
         log.info("[finaliza] TurmaApplicationService - saveTurma");
         return TurmaIdResponse.builder().idTurma(turma.getIdTurma()).build();
     }
-
 
     @Override
     public List<TurmaListResponse> getAllTurmas() {
