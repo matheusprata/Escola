@@ -30,6 +30,6 @@ public class AlunoResponsavelResponse {
         this.sexo = aluno.getSexo();
         this.dataNascimento = aluno.getDataNascimento();
         this.dataMatricula = aluno.getDataMatricula();
-        this.responsaveis = ResponsavelListResponse.converte(aluno.getResponsavel());
+        this.responsaveis = ResponsavelListResponse.converte(aluno.getResponsaveis());
     }
 }

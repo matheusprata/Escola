@@ -1,13 +1,10 @@
 package com.matheusprata.escola.aluno.application.api;
 
-import com.matheusprata.escola.turma.application.api.TurmaRequest;
-import com.matheusprata.escola.turma.application.api.TurmaResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
-import java.util.UUID;
 
 @Tag(name = "Aluno", description = "Aluno APIs")
 @RequestMapping("/v1/aluno")
@@ -29,8 +26,4 @@ public interface AlunoApi{
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void updateAluno(@RequestParam String cpf,
                       @Valid @RequestBody AlunoAlteracaoRequest alunoAlteracaoRequest);
-
-    @PostMapping("/{idTurma}")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    TurmaResponse saveAlunoTurma(@PathVariable UUID idTurma, @Valid @RequestBody TurmaRequest turmaRequest);
 }
