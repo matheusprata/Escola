@@ -1,6 +1,7 @@
 package com.matheusprata.escola.aluno.application.api;
 
 import com.matheusprata.escola.aluno.domain.Sexo;
+import com.matheusprata.escola.turma.domain.Turma;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -13,8 +14,6 @@ import java.time.LocalDate;
 public class AlunoRequest {
     @NotNull(message = "Campo Nome Obrigatório!")
     String nomeCompleto;
-    @NotNull(message = "turma Obrigatório")
-    String turma;
     @Email
     @Column(unique = true)
     String email;
@@ -26,4 +25,6 @@ public class AlunoRequest {
     String cpf;
     @NotNull(message = "data matricula é obrigatória")
     LocalDate dataMatricula;
+
+    Turma turma;
 }

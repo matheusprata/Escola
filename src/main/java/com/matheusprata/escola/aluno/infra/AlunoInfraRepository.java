@@ -1,5 +1,6 @@
 package com.matheusprata.escola.aluno.infra;
 
+import com.matheusprata.escola.aluno.application.api.AlunoTurmaResponse;
 import com.matheusprata.escola.aluno.application.repository.AlunoRepository;
 import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.handler.APIException;

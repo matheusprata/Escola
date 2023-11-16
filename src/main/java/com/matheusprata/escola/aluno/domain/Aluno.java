@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.application.api.AlunoAlteracaoRequest;
 import com.matheusprata.escola.aluno.application.api.AlunoRequest;
 import com.matheusprata.escola.responsavel.domain.Responsavel;
+import com.matheusprata.escola.turma.application.api.TurmaRequest;
 import com.matheusprata.escola.turma.domain.Turma;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -32,8 +33,6 @@ public class Aluno {
     private String cpf;
     @NotNull(message = "Campo Nome Obrigatório!")
     private String nomeCompleto;
-    @NotNull(message = "turma Obrigatório")
-    private String turma;
     @Email
     @Column(unique = true)
     private String email;
@@ -51,7 +50,6 @@ public class Aluno {
     public Aluno(AlunoRequest alunoRequest) {
         this.cpf = alunoRequest.getCpf();
         this.nomeCompleto = alunoRequest.getNomeCompleto().toUpperCase();
-        this.turma = alunoRequest.getTurma().toUpperCase();
         this.email = alunoRequest.getEmail().toUpperCase();
         this.celular = alunoRequest.getCelular();
         this.sexo = alunoRequest.getSexo();
@@ -60,7 +58,6 @@ public class Aluno {
     }
 
     public void update(AlunoAlteracaoRequest alunoAlteracaoRequest) {
-        this.turma = alunoAlteracaoRequest.getTurma().toUpperCase();
         this.email = alunoAlteracaoRequest.getEmail().toUpperCase();
         this.celular = alunoAlteracaoRequest.getCelular();
         this.dataNascimento = alunoAlteracaoRequest.getDataNascimento();
