@@ -1,5 +1,6 @@
 package com.matheusprata.escola.turma.application.api;
 
+import com.matheusprata.escola.aluno.application.api.AlunoResponse;
 import com.matheusprata.escola.turma.application.service.TurmaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -28,6 +29,14 @@ public class TurmaRestController implements TurmaApi{
         List<TurmaListResponse> turmas = turmaService.getAllTurmas();
         log.info("[finaliza] TurmaRestController - getAllTurmas");
         return turmas;
+    }
+
+    @Override
+    public TurmaDetalhadoResponse getOneTurma(Long idTurma) {
+        log.info("[inicia] TurmaRestController - getOneTurma");
+        TurmaDetalhadoResponse getId = turmaService.getById(idTurma);
+        log.info("[finaliza] TurmaRestController - getOneTurma");
+        return getId;
     }
 
     @Override

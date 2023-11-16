@@ -1,6 +1,7 @@
 package com.matheusprata.escola.turma.application.api;
 
 import com.matheusprata.escola.aluno.application.api.AlunoAlteracaoRequest;
+import com.matheusprata.escola.professor.application.api.ProfessorDetalhadoResponse;
 import com.matheusprata.escola.responsavel.application.api.ResponsavelAlteracaoRequest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -20,6 +21,10 @@ public interface TurmaApi {
     @GetMapping(value = "/all")
     @ResponseStatus(code = HttpStatus.OK)
     List<TurmaListResponse> getAllTurmas();
+
+    @GetMapping(value = "/{idTurma}")
+    @ResponseStatus(code = HttpStatus.OK)
+    TurmaDetalhadoResponse getOneTurma(@PathVariable Long idTurma);
 
     @GetMapping("/turma/{ano}")
     @ResponseStatus(code = HttpStatus.OK)
