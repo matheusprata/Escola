@@ -1,7 +1,5 @@
 package com.matheusprata.escola.turma.application.service;
 
-import com.matheusprata.escola.aluno.application.api.AlunoListResponse;
-import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.turma.application.api.TurmaIdResponse;
 import com.matheusprata.escola.turma.application.api.TurmaListResponse;
 import com.matheusprata.escola.turma.application.api.TurmaRequest;
@@ -32,6 +30,14 @@ public class TurmaApplicationService implements TurmaService{
         log.info("[inicia] TurmaApplicationService - getAllTurmas");
         List<Turma> turmas = turmaRepository.getAllTurmas();
         log.info("[finaliza] TurmaApplicationService - getAllTurmas");
+        return TurmaListResponse.converte(turmas);
+    }
+
+    @Override
+    public List<TurmaListResponse> findAllByAno(Integer ano) {
+        log.info("[inicia] TurmaApplicationService - getAno");
+        List<Turma> turmas = turmaRepository.findAllByAno(ano);
+        log.info("[finaliza] TurmaApplicationService - getAno");
         return TurmaListResponse.converte(turmas);
     }
 }

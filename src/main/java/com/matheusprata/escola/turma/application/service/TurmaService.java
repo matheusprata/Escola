@@ -9,4 +9,5 @@ import java.util.List;
 public interface TurmaService {
     TurmaIdResponse saveTurma(TurmaRequest turmaRequest);
     List<TurmaListResponse> getAllTurmas();
+    List<TurmaListResponse> findAllByAno(Integer ano);
 }

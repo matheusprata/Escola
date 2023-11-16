@@ -1,6 +1,5 @@
 package com.matheusprata.escola.turma.infra;
 
-import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.handler.APIException;
 import com.matheusprata.escola.turma.application.repository.TurmaRepository;
 import com.matheusprata.escola.turma.domain.Turma;
@@ -35,6 +34,14 @@ public class TurmaInfraRepository implements TurmaRepository {
         log.info("[inicia] TurmaInfraRepository - saveTurma");
         List<Turma> turmas = turmaSpringDataJPARepository.findAll();
         log.info("[inicia] TurmaInfraRepository - saveTurma");
+        return turmas;
+    }
+
+    @Override
+    public List<Turma> findAllByAno(Integer ano) {
+        log.info("[inicia] TurmaInfraRepository - getAno");
+        List<Turma> turmas = turmaSpringDataJPARepository.findAllByAno(ano);
+        log.info("[inicia] TurmaInfraRepository - getAno");
         return turmas;
     }
 }
