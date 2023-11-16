@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.application.api.AlunoAlteracaoRequest;
 import com.matheusprata.escola.aluno.application.api.AlunoRequest;
 import com.matheusprata.escola.responsavel.domain.Responsavel;
-import com.matheusprata.escola.turma.application.api.TurmaRequest;
 import com.matheusprata.escola.turma.domain.Turma;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -27,6 +26,10 @@ public class Aluno {
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
     @JsonIgnore
+    List<Responsavel> responsaveis;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
+    @JsonIgnore
     List<Turma> turmas;
 
     @Column(name = "cpf", unique = true, updatable = false)
@@ -43,11 +46,8 @@ public class Aluno {
     @NotNull(message = "data matricula é obrigatória")
     private LocalDate dataMatricula;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
-    @JsonIgnore
-    List<Responsavel> responsavel;
-
-    public Aluno(AlunoRequest alunoRequest) {
+    public Aluno(AlunoRequest alunoRequest, Turma turma) {
+        this.turma = turma;
         this.cpf = alunoRequest.getCpf();
         this.nomeCompleto = alunoRequest.getNomeCompleto().toUpperCase();
         this.email = alunoRequest.getEmail().toUpperCase();

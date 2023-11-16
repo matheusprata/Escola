@@ -1,5 +1,6 @@
 package com.matheusprata.escola.turma.application.service;
 
+
 import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.handler.APIException;
 import com.matheusprata.escola.turma.application.api.*;
@@ -9,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -25,6 +25,7 @@ public class TurmaApplicationService implements TurmaService{
         log.info("[finaliza] TurmaApplicationService - saveTurma");
         return TurmaIdResponse.builder().idTurma(turma.getIdTurma()).build();
     }
+
 
     @Override
     public List<TurmaListResponse> getAllTurmas() {

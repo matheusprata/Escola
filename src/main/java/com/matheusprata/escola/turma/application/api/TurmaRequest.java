@@ -1,5 +1,4 @@
 package com.matheusprata.escola.turma.application.api;
-
 import com.matheusprata.escola.turma.domain.Turno;
 import lombok.Value;
 

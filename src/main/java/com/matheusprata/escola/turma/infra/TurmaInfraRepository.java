@@ -8,7 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 

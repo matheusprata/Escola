@@ -5,7 +5,6 @@ import java.time.LocalDate;
 
 @Value
 public class AlunoAlteracaoRequest {
-    String turma;
     String email;
     String celular;
     LocalDate dataNascimento;

@@ -1,7 +1,6 @@
 package com.matheusprata.escola.turma.application.service;
 
 import com.matheusprata.escola.turma.application.api.*;
-
 import java.util.List;
 
 public interface TurmaService {

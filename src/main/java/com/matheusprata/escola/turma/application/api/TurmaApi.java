@@ -1,5 +1,12 @@
 package com.matheusprata.escola.turma.application.api;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import com.matheusprata.escola.aluno.application.api.AlunoAlteracaoRequest;
 import com.matheusprata.escola.professor.application.api.ProfessorDetalhadoResponse;
 import com.matheusprata.escola.responsavel.application.api.ResponsavelAlteracaoRequest;
