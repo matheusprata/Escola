@@ -1,5 +1,8 @@
 package com.matheusprata.escola.turma.application.service;
 
+import com.matheusprata.escola.aluno.domain.Aluno;
+import com.matheusprata.escola.handler.APIException;
+import com.matheusprata.escola.turma.application.api.TurmaAlteracaoRequest;
 import com.matheusprata.escola.turma.application.api.TurmaIdResponse;
 import com.matheusprata.escola.turma.application.api.TurmaListResponse;
 import com.matheusprata.escola.turma.application.api.TurmaRequest;
@@ -7,9 +10,11 @@ import com.matheusprata.escola.turma.application.repository.TurmaRepository;
 import com.matheusprata.escola.turma.domain.Turma;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -39,5 +44,15 @@ public class TurmaApplicationService implements TurmaService{
         List<Turma> turmas = turmaRepository.findAllByAno(ano);
         log.info("[finaliza] TurmaApplicationService - getAno");
         return TurmaListResponse.converte(turmas);
+    }
+
+    @Override
+    public void updateTurma(Long idTurma, TurmaAlteracaoRequest turmaAlteracaoRequest) {
+        log.info("[inicia] TurmaApplicationService - updateTurma");
+        Turma turma = turmaRepository.findById(idTurma)
+                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Turma não encontrada!"));
+        turma.update(turmaAlteracaoRequest);
+        turmaRepository.saveTurma(turma);
+        log.info("[finaliza] TurmaApplicationService - updateTurma");
     }
 }

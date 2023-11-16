@@ -1,5 +1,6 @@
 package com.matheusprata.escola.turma.application.service;
 
+import com.matheusprata.escola.turma.application.api.TurmaAlteracaoRequest;
 import com.matheusprata.escola.turma.application.api.TurmaIdResponse;
 import com.matheusprata.escola.turma.application.api.TurmaListResponse;
 import com.matheusprata.escola.turma.application.api.TurmaRequest;
@@ -10,4 +11,5 @@ public interface TurmaService {
     TurmaIdResponse saveTurma(TurmaRequest turmaRequest);
     List<TurmaListResponse> getAllTurmas();
     List<TurmaListResponse> findAllByAno(Integer ano);
+    void updateTurma(Long idTurma, TurmaAlteracaoRequest turmaAlteracaoRequest);
 }

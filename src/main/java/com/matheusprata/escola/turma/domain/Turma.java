@@ -3,6 +3,7 @@ package com.matheusprata.escola.turma.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.professor.domain.Professor;
+import com.matheusprata.escola.turma.application.api.TurmaAlteracaoRequest;
 import com.matheusprata.escola.turma.application.api.TurmaRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,13 @@ public class Turma {
     private Integer ano;
 
     public Turma(TurmaRequest turmaRequest) {
+        this.turma = turmaRequest.getTurma();
+        this.sala = turmaRequest.getSala();
+        this.turno = turmaRequest.getTurno();
+        this.ano = turmaRequest.getAno();
+    }
+
+    public void update(TurmaAlteracaoRequest turmaRequest) {
         this.turma = turmaRequest.getTurma();
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();
