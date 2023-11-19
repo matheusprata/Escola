@@ -1,7 +1,7 @@
 package com.matheusprata.escola.professor.application.service;
 
 import com.matheusprata.escola.professor.application.api.*;
-import com.matheusprata.escola.turma.application.api.ProfessorTurmaResponse;
+import com.matheusprata.escola.turma.application.api.response.ProfessorTurmaResponse;
 
 import java.util.List;
 import java.util.UUID;

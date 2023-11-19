@@ -3,7 +3,7 @@ package com.matheusprata.escola.aluno.application.service;
 import com.matheusprata.escola.aluno.application.api.*;
 import com.matheusprata.escola.aluno.application.repository.AlunoRepository;
 import com.matheusprata.escola.aluno.domain.Aluno;
-import com.matheusprata.escola.turma.application.api.AlunoTurmaResponse;
+import com.matheusprata.escola.turma.application.api.response.AlunoTurmaResponse;
 import com.matheusprata.escola.turma.application.repository.TurmaRepository;
 import com.matheusprata.escola.turma.domain.Turma;
 import lombok.RequiredArgsConstructor;

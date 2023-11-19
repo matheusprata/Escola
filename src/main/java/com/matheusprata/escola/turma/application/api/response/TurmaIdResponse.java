@@ -1,4 +1,4 @@
-package com.matheusprata.escola.turma.application.api;
+package com.matheusprata.escola.turma.application.api.response;
 
 import lombok.Builder;
 import lombok.Value;

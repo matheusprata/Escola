@@ -1,6 +1,6 @@
 package com.matheusprata.escola.professor.application.api;
 
-import com.matheusprata.escola.turma.application.api.ProfessorTurmaResponse;
+import com.matheusprata.escola.turma.application.api.response.ProfessorTurmaResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

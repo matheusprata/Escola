@@ -1,7 +1,7 @@
 package com.matheusprata.escola.professor.application.api;
 
 import com.matheusprata.escola.professor.application.service.ProfessorService;
-import com.matheusprata.escola.turma.application.api.ProfessorTurmaResponse;
+import com.matheusprata.escola.turma.application.api.response.ProfessorTurmaResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
