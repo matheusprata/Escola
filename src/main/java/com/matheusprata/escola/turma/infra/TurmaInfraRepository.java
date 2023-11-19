@@ -9,7 +9,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @Log4j2
@@ -46,10 +45,11 @@ public class TurmaInfraRepository implements TurmaRepository {
     }
 
     @Override
-    public Optional<Turma> findById(Long idTurma) {
+    public Turma findById(Long idTurma) {
         log.info("[inicia] TurmaInfraRepository - findById");
-        Optional<Turma> turmaOptional = turmaSpringDataJPARepository.findById(idTurma);
+        Turma turma = turmaSpringDataJPARepository.findById(idTurma)
+                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Turma não encontrada!"));
         log.info("[finaliza] TurmaInfraRepository - findById");
-        return turmaOptional;
+        return turma;
     }
 }

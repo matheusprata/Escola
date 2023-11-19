@@ -4,7 +4,6 @@ import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.aluno.domain.Sexo;
 import com.matheusprata.escola.responsavel.application.api.ResponsavelListResponse;
 import lombok.Value;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;

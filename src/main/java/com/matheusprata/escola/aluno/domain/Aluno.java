@@ -28,9 +28,9 @@ public class Aluno {
     @JsonIgnore
     List<Responsavel> responsaveis;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    List<Turma> turmas;
+    private Turma turma;
 
     @Column(name = "cpf", unique = true, updatable = false)
     private String cpf;
@@ -46,7 +46,7 @@ public class Aluno {
     @NotNull(message = "data matricula é obrigatória")
     private LocalDate dataMatricula;
 
-    public Aluno(AlunoRequest alunoRequest) {
+    public Aluno(AlunoRequest alunoRequest, Turma turma) {
         this.cpf = alunoRequest.getCpf();
         this.nomeCompleto = alunoRequest.getNomeCompleto().toUpperCase();
         this.email = alunoRequest.getEmail().toUpperCase();
@@ -54,6 +54,7 @@ public class Aluno {
         this.sexo = alunoRequest.getSexo();
         this.dataNascimento = alunoRequest.getDataNascimento();
         this.dataMatricula = alunoRequest.getDataMatricula();
+        this.turma = turma;
     }
 
     public void update(AlunoAlteracaoRequest alunoAlteracaoRequest) {

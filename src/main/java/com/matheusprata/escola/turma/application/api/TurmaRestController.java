@@ -1,6 +1,5 @@
 package com.matheusprata.escola.turma.application.api;
 
-import com.matheusprata.escola.aluno.application.api.AlunoResponse;
 import com.matheusprata.escola.turma.application.service.TurmaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

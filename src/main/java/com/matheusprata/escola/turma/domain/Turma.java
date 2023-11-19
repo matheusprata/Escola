@@ -21,10 +21,9 @@ public class Turma {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idTurma;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "aluno_id")
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "turma")
     @JsonIgnore
-    private Aluno aluno;
+    List<Aluno> alunos;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "professor_id")
@@ -42,6 +41,14 @@ public class Turma {
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();
         this.ano = turmaRequest.getAno();
+    }
+
+    public Turma(Aluno aluno, TurmaRequest turmaRequest) {
+        this.turma = turmaRequest.getTurma();
+        this.sala = turmaRequest.getSala();
+        this.turno = turmaRequest.getTurno();
+        this.ano = turmaRequest.getAno();
+        this.alunos = (List<Aluno>) aluno;
     }
 
     public void update(TurmaAlteracaoRequest turmaRequest) {

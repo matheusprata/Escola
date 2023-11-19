@@ -15,7 +15,8 @@ public interface ResponsavelApi {
 
     @PostMapping("/{idAluno}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    ResponsavelResponse saveResponsavel(@PathVariable UUID idAluno, @Valid @RequestBody ResponsavelRequest responsavelRequest);
+    ResponsavelResponse saveResponsavel(@PathVariable UUID idAluno,
+                                        @Valid @RequestBody ResponsavelRequest responsavelRequest);
 
     @GetMapping("/all")
     @ResponseStatus(code = HttpStatus.OK)

@@ -1,12 +1,10 @@
 package com.matheusprata.escola.turma.application.service;
 
-import com.matheusprata.escola.handler.APIException;
 import com.matheusprata.escola.turma.application.api.*;
 import com.matheusprata.escola.turma.application.repository.TurmaRepository;
 import com.matheusprata.escola.turma.domain.Turma;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -43,8 +41,7 @@ public class TurmaApplicationService implements TurmaService{
     @Override
     public void updateTurma(Long idTurma, TurmaAlteracaoRequest turmaAlteracaoRequest) {
         log.info("[inicia] TurmaApplicationService - updateTurma");
-        Turma turma = turmaRepository.findById(idTurma)
-                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Turma não encontrada!"));
+        Turma turma = turmaRepository.findById(idTurma);
         turma.update(turmaAlteracaoRequest);
         turmaRepository.saveTurma(turma);
         log.info("[finaliza] TurmaApplicationService - updateTurma");
@@ -53,8 +50,7 @@ public class TurmaApplicationService implements TurmaService{
     @Override
     public TurmaDetalhadoResponse getById(Long idTurma) {
         log.info("[inicia] TurmaApplicationService - updateTurma");
-        Turma turma = turmaRepository.findById(idTurma)
-                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Turma não encontrada!"));
+        Turma turma = turmaRepository.findById(idTurma);
         log.info("[finaliza] TurmaApplicationService - updateTurma");
         return new TurmaDetalhadoResponse(turma);
     }

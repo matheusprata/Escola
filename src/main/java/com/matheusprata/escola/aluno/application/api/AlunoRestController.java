@@ -1,6 +1,7 @@
 package com.matheusprata.escola.aluno.application.api;
 
 import com.matheusprata.escola.aluno.application.service.AlunoService;
+import com.matheusprata.escola.turma.application.api.AlunoTurmaResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,9 +14,9 @@ public class AlunoRestController implements AlunoApi{
     private final AlunoService alunoService;
 
     @Override
-    public AlunoIdResponse saveAluno(AlunoRequest alunoRequest) {
+    public AlunoResponse saveAluno(Long idTurma, AlunoRequest alunoRequest) {
         log.info("[inicia] AlunoRestController - saveAluno");
-        AlunoIdResponse alunoCadastrado = alunoService.saveAluno(alunoRequest);
+        AlunoResponse alunoCadastrado = alunoService.saveAluno(idTurma, alunoRequest);
         log.info("[finaliza] AlunoRestController - saveAluno");
         return alunoCadastrado;
     }
@@ -34,6 +35,14 @@ public class AlunoRestController implements AlunoApi{
         AlunoResponse getCpf = alunoService.getByCpf(cpf);
         log.info("[finaliza] AlunoRestController - getByCpf");
         return getCpf;
+    }
+
+    @Override
+    public AlunoTurmaResponse getAllAlunoByTurma(Long idTurma) {
+        log.info("[inicia] AlunoRestController - getAllAlunoByTurma");
+        AlunoTurmaResponse buscaAlunoTurma = alunoService.getAlunoByTurma(idTurma);
+        log.info("[finaliza] AlunoRestController - getAllAlunoByTurma");
+        return buscaAlunoTurma;
     }
 
     @Override
