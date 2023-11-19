@@ -32,16 +32,20 @@ public class Aluno {
     @JsonIgnore
     private Turma turma;
 
+    @NotNull(message = "Campo cpf Obrigatório!")
     @Column(name = "cpf", unique = true, updatable = false)
     private String cpf;
     @NotNull(message = "Campo Nome Obrigatório!")
     private String nomeCompleto;
     @Email
     @Column(unique = true)
+    @NotNull(message = "Campo email Obrigatório!")
     private String email;
+    @NotNull(message = "Campo celular Obrigatório!")
     private String celular;
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
+    @NotNull(message = "Campo dataNascimento Obrigatório!")
     private LocalDate dataNascimento;
     @NotNull(message = "data matricula é obrigatória")
     private LocalDate dataMatricula;
