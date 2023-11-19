@@ -11,6 +11,10 @@ import java.util.stream.Collectors;
 public class ProfessorListResponse {
     UUID idProfessor;
     String nomeCompleto;
+    String cpf;
+    String email;
+    String celular;
+    String formacao;
 
     public static List<ProfessorListResponse> converte(List<Professor> professores){
         return professores.stream()
@@ -21,5 +25,9 @@ public class ProfessorListResponse {
     public ProfessorListResponse (Professor professor){
         this.idProfessor = professor.getIdProfessor();
         this.nomeCompleto = professor.getNomeCompleto();
+        this.cpf = professor.getCpf();
+        this.email = professor.getEmail();
+        this.celular = professor.getCelular();
+        this.formacao = professor.getFormacao();
     }
 }
