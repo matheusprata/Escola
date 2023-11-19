@@ -1,11 +1,11 @@
-package com.matheusprata.escola.turma.application.api;
+package com.matheusprata.escola.turma.application.api.request;
 
 import com.matheusprata.escola.turma.domain.Turno;
 import jakarta.validation.constraints.NotNull;
 import lombok.Value;
 
 @Value
-public class TurmaAlteracaoRequest {
+public class TurmaRequest {
     @NotNull(message = "Campo turma Obrigatório!")
     String turma;
     @NotNull(message = "Campo sala Obrigatório!")

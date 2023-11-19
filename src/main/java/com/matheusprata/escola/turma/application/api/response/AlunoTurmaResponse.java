@@ -1,4 +1,4 @@
-package com.matheusprata.escola.turma.application.api;
+package com.matheusprata.escola.turma.application.api.response;
 
 import com.matheusprata.escola.aluno.application.api.AlunoListResponse;
 import com.matheusprata.escola.turma.domain.Turma;

@@ -1,5 +1,10 @@
 package com.matheusprata.escola.turma.application.api;
 
+import com.matheusprata.escola.turma.application.api.request.TurmaAlteracaoRequest;
+import com.matheusprata.escola.turma.application.api.request.TurmaRequest;
+import com.matheusprata.escola.turma.application.api.response.TurmaDetalhadoResponse;
+import com.matheusprata.escola.turma.application.api.response.TurmaIdResponse;
+import com.matheusprata.escola.turma.application.api.response.TurmaListResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

@@ -5,7 +5,7 @@ import lombok.Value;
 
 import java.util.UUID;
 @Value
-public class ProfessorDetalhadoResponse {
+public class ProfessorResponse {
     UUID idProfessor;
     String cpf;
     String nomeCompleto;
@@ -13,7 +13,7 @@ public class ProfessorDetalhadoResponse {
     String celular;
     String formacao;
 
-    public ProfessorDetalhadoResponse (Professor professor){
+    public ProfessorResponse(Professor professor){
         this.idProfessor = professor.getIdProfessor();
         this.cpf = professor.getCpf();
         this.nomeCompleto = professor.getNomeCompleto();

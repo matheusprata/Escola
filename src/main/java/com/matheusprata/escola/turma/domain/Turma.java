@@ -3,14 +3,15 @@ package com.matheusprata.escola.turma.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.professor.domain.Professor;
-import com.matheusprata.escola.turma.application.api.TurmaAlteracaoRequest;
-import com.matheusprata.escola.turma.application.api.TurmaRequest;
+import com.matheusprata.escola.turma.application.api.request.TurmaAlteracaoRequest;
+import com.matheusprata.escola.turma.application.api.request.TurmaRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor
@@ -26,10 +27,9 @@ public class Turma {
     @JsonIgnore
     List<Aluno> alunos;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "professor_id")
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "turma")
     @JsonIgnore
-    private Professor professor;
+    List<Professor> professores;
 
     @NotNull(message = "Campo turma Obrigatório!")
     private String turma;
@@ -53,7 +53,15 @@ public class Turma {
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();
         this.ano = turmaRequest.getAno();
-        this.alunos = (List<Aluno>) aluno;
+        this.alunos = Collections.singletonList(aluno);
+    }
+
+    public Turma(Professor professor, TurmaRequest turmaRequest) {
+        this.turma = turmaRequest.getTurma();
+        this.sala = turmaRequest.getSala();
+        this.turno = turmaRequest.getTurno();
+        this.ano = turmaRequest.getAno();
+        this.professores = Collections.singletonList(professor);
     }
 
     public void update(TurmaAlteracaoRequest turmaRequest) {

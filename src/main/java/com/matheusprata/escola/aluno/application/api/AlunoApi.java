@@ -1,6 +1,6 @@
 package com.matheusprata.escola.aluno.application.api;
 
-import com.matheusprata.escola.turma.application.api.AlunoTurmaResponse;
+import com.matheusprata.escola.turma.application.api.response.AlunoTurmaResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

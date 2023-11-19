@@ -1,5 +1,6 @@
 package com.matheusprata.escola.professor.application.api;
 
+import com.matheusprata.escola.turma.application.api.response.ProfessorTurmaResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -11,9 +12,10 @@ import java.util.UUID;
 @RequestMapping("/v1/professor")
 public interface ProfessorApi {
 
-    @PostMapping
+    @PostMapping(value = "/{idTurma}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    ProfessorIdResponse saveProfessor(@Valid @RequestBody ProfessorRequest professorRequest);
+    ProfessorResponse saveProfessor(@PathVariable Long idTurma,
+                                      @Valid @RequestBody ProfessorRequest professorRequest);
 
     @GetMapping("/all")
     @ResponseStatus(code = HttpStatus.OK)
@@ -21,7 +23,11 @@ public interface ProfessorApi {
 
     @GetMapping(value = "/{idProfessor}")
     @ResponseStatus(code = HttpStatus.OK)
-    ProfessorDetalhadoResponse getOneProfessor(@PathVariable UUID idProfessor);
+    ProfessorResponse getOneProfessor(@PathVariable UUID idProfessor);
+
+    @GetMapping("/turma/{idTurma}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ProfessorTurmaResponse getProfessorByTurma(@PathVariable Long idTurma);
 
     @PatchMapping(value = "/{idProfessor}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
