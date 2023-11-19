@@ -11,8 +11,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,9 +24,9 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProfessor;
 
-    @ManyToMany(mappedBy = "professores")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<Turma> turmas;
+    private Turma turma;
 
     @NotNull(message = "Campo cpf Obrigatório!")
     @Column(name = "cpf", unique = true, updatable = false)
@@ -45,7 +47,7 @@ public class Professor {
         this.email = professorRequest.getEmail();
         this.celular = professorRequest.getCelular();
         this.formacao = professorRequest.getFormacao();
-        this.turmas = getTurmas();
+        this.turma = turma;
     }
 
     public void update(ProfessorAlteracaoRequest professorAlteracaoRequest) {

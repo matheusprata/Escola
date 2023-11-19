@@ -1,6 +1,8 @@
 package com.matheusprata.escola.professor.application.api;
 
 import com.matheusprata.escola.professor.application.service.ProfessorService;
+import com.matheusprata.escola.turma.application.api.AlunoTurmaResponse;
+import com.matheusprata.escola.turma.application.api.ProfessorTurmaResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +38,14 @@ public class ProfessorRestController implements ProfessorApi{
         ProfessorResponse response = professorService.getOneProfessor(idProfessor);
         log.info("[finaliza] ProfessorRestController - getOneProfessor");
         return response;
+    }
+
+    @Override
+    public ProfessorTurmaResponse getAllProfessorByTurma(Long idTurma) {
+        log.info("[inicia] ProfessorTurmaResponse - getAllProfessorByTurma");
+        ProfessorTurmaResponse buscaProfessorTurma = professorService.getProfessorByTurma(idTurma);
+        log.info("[finaliza] ProfessorTurmaResponse - getAllProfessorByTurma");
+        return buscaProfessorTurma;
     }
 
     @Override

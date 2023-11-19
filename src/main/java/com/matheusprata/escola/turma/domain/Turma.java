@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor
@@ -26,12 +27,7 @@ public class Turma {
     @JsonIgnore
     List<Aluno> alunos;
 
-    @ManyToMany
-    @JoinTable(
-            name = "professor_turma",
-            joinColumns = @JoinColumn(name = "turma_id"),
-            inverseJoinColumns = @JoinColumn(name = "professor_id")
-    )
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "turma")
     @JsonIgnore
     private List<Professor> professores;
 
@@ -57,7 +53,7 @@ public class Turma {
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();
         this.ano = turmaRequest.getAno();
-        this.alunos = (List<Aluno>) aluno;
+        this.alunos = Collections.singletonList(aluno);
     }
 
     public Turma(Professor professor, TurmaRequest turmaRequest) {
@@ -65,7 +61,7 @@ public class Turma {
         this.sala = turmaRequest.getSala();
         this.turno = turmaRequest.getTurno();
         this.ano = turmaRequest.getAno();
-        this.professores = getProfessores();
+        this.professores = Collections.singletonList(professor);
     }
 
     public void update(TurmaAlteracaoRequest turmaRequest) {
