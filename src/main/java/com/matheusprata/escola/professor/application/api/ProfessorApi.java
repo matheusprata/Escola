@@ -11,9 +11,10 @@ import java.util.UUID;
 @RequestMapping("/v1/professor")
 public interface ProfessorApi {
 
-    @PostMapping
+    @PostMapping(value = "/{idTurma}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    ProfessorIdResponse saveProfessor(@Valid @RequestBody ProfessorRequest professorRequest);
+    ProfessorResponse saveProfessor(@PathVariable Long idTurma,
+                                      @Valid @RequestBody ProfessorRequest professorRequest);
 
     @GetMapping("/all")
     @ResponseStatus(code = HttpStatus.OK)
@@ -21,7 +22,7 @@ public interface ProfessorApi {
 
     @GetMapping(value = "/{idProfessor}")
     @ResponseStatus(code = HttpStatus.OK)
-    ProfessorDetalhadoResponse getOneProfessor(@PathVariable UUID idProfessor);
+    ProfessorResponse getOneProfessor(@PathVariable UUID idProfessor);
 
     @PatchMapping(value = "/{idProfessor}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

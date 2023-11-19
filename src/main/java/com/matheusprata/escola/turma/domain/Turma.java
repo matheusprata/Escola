@@ -26,10 +26,14 @@ public class Turma {
     @JsonIgnore
     List<Aluno> alunos;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "professor_id")
+    @ManyToMany
+    @JoinTable(
+            name = "professor_turma",
+            joinColumns = @JoinColumn(name = "turma_id"),
+            inverseJoinColumns = @JoinColumn(name = "professor_id")
+    )
     @JsonIgnore
-    private Professor professor;
+    private List<Professor> professores;
 
     @NotNull(message = "Campo turma Obrigatório!")
     private String turma;
@@ -54,6 +58,14 @@ public class Turma {
         this.turno = turmaRequest.getTurno();
         this.ano = turmaRequest.getAno();
         this.alunos = (List<Aluno>) aluno;
+    }
+
+    public Turma(Professor professor, TurmaRequest turmaRequest) {
+        this.turma = turmaRequest.getTurma();
+        this.sala = turmaRequest.getSala();
+        this.turno = turmaRequest.getTurno();
+        this.ano = turmaRequest.getAno();
+        this.professores = getProfessores();
     }
 
     public void update(TurmaAlteracaoRequest turmaRequest) {

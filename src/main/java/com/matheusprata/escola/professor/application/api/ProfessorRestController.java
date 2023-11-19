@@ -15,11 +15,11 @@ public class ProfessorRestController implements ProfessorApi{
     private final ProfessorService professorService;
 
     @Override
-    public ProfessorIdResponse saveProfessor(ProfessorRequest professorRequest) {
+    public ProfessorResponse saveProfessor(Long idTurma, ProfessorRequest professorRequest) {
         log.info("[inicia] ProfessorRestController - saveProfessor");
-        ProfessorIdResponse idResponse = professorService.saveProfessor(professorRequest);
+        ProfessorResponse Response = professorService.saveProfessor(idTurma, professorRequest);
         log.info("[finaliza] ProfessorRestController - saveProfessor");
-        return idResponse;
+        return Response;
     }
 
     @Override
@@ -31,9 +31,9 @@ public class ProfessorRestController implements ProfessorApi{
     }
 
     @Override
-    public ProfessorDetalhadoResponse getOneProfessor(UUID idProfessor) {
+    public ProfessorResponse getOneProfessor(UUID idProfessor) {
         log.info("[inicia] ProfessorRestController - getOneProfessor");
-        ProfessorDetalhadoResponse response = professorService.getOneProfessor(idProfessor);
+        ProfessorResponse response = professorService.getOneProfessor(idProfessor);
         log.info("[finaliza] ProfessorRestController - getOneProfessor");
         return response;
     }
