@@ -3,9 +3,10 @@ package com.matheusprata.escola.turma.application.api;
 import com.matheusprata.escola.professor.application.api.ProfessorListResponse;
 import com.matheusprata.escola.turma.domain.Turma;
 import com.matheusprata.escola.turma.domain.Turno;
-
+import lombok.Value;
 import java.util.List;
 
+@Value
 public class ProfessorTurmaResponse {
     Long idTurma;
     String turma;
