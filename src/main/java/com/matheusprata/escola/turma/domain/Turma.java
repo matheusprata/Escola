@@ -29,7 +29,7 @@ public class Turma {
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "turma")
     @JsonIgnore
-    private List<Professor> professores;
+    List<Professor> professores;
 
     @NotNull(message = "Campo turma Obrigatório!")
     private String turma;

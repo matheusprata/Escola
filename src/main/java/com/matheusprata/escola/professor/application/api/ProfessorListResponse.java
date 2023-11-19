@@ -12,13 +12,14 @@ public class ProfessorListResponse {
     UUID idProfessor;
     String nomeCompleto;
 
-    public ProfessorListResponse (Professor professor){
-        this.idProfessor = professor.getIdProfessor();
-        this.nomeCompleto = professor.getNomeCompleto();
-    }
-    public static List<ProfessorListResponse> converte(List<Professor>professores){
+    public static List<ProfessorListResponse> converte(List<Professor> professores){
         return professores.stream()
                 .map(ProfessorListResponse::new)
                 .collect(Collectors.toList());
+    }
+
+    public ProfessorListResponse (Professor professor){
+        this.idProfessor = professor.getIdProfessor();
+        this.nomeCompleto = professor.getNomeCompleto();
     }
 }

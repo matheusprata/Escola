@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 @Log4j2
+@RequiredArgsConstructor
 public class ProfessorApplicationService implements ProfessorService{
     private final ProfessorRepository professorRepository;
     private final TurmaRepository turmaRepository;
@@ -56,9 +56,9 @@ public class ProfessorApplicationService implements ProfessorService{
 
     @Override
     public ProfessorTurmaResponse getProfessorByTurma(Long idTurma) {
-        log.info("[inicia] ProfessorTurmaResponse - getProfessorByTurma");
+        log.info("[inicia] ProfessorApplicationService - getProfessorByTurma");
         Turma turma = turmaRepository.findById(idTurma);
-        log.info("[finaliza] ProfessorTurmaResponse - getProfessorByTurma");
+        log.info("[finaliza] ProfessorApplicationService - getProfessorByTurma");
         return new ProfessorTurmaResponse(turma);
     }
 }

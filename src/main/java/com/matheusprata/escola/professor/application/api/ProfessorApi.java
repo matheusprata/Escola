@@ -27,7 +27,7 @@ public interface ProfessorApi {
 
     @GetMapping("/turma/{idTurma}")
     @ResponseStatus(code = HttpStatus.OK)
-    ProfessorTurmaResponse getAllProfessorByTurma(@PathVariable Long idTurma);
+    ProfessorTurmaResponse getProfessorByTurma(@PathVariable Long idTurma);
 
     @PatchMapping(value = "/{idProfessor}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

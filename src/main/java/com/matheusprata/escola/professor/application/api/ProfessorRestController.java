@@ -1,7 +1,6 @@
 package com.matheusprata.escola.professor.application.api;
 
 import com.matheusprata.escola.professor.application.service.ProfessorService;
-import com.matheusprata.escola.turma.application.api.AlunoTurmaResponse;
 import com.matheusprata.escola.turma.application.api.ProfessorTurmaResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -41,10 +40,10 @@ public class ProfessorRestController implements ProfessorApi{
     }
 
     @Override
-    public ProfessorTurmaResponse getAllProfessorByTurma(Long idTurma) {
-        log.info("[inicia] ProfessorTurmaResponse - getAllProfessorByTurma");
+    public ProfessorTurmaResponse getProfessorByTurma(Long idTurma) {
+        log.info("[inicia] ProfessorRestController - getAllProfessorByTurma");
         ProfessorTurmaResponse buscaProfessorTurma = professorService.getProfessorByTurma(idTurma);
-        log.info("[finaliza] ProfessorTurmaResponse - getAllProfessorByTurma");
+        log.info("[finaliza] ProfessorRestController - getAllProfessorByTurma");
         return buscaProfessorTurma;
     }
 
