@@ -26,7 +26,7 @@ public interface TurmaApi {
     @ResponseStatus(code = HttpStatus.OK)
     TurmaDetalhadoResponse getOneTurma(@PathVariable Long idTurma);
 
-    @GetMapping("/turma/{ano}")
+    @GetMapping("/{ano}")
     @ResponseStatus(code = HttpStatus.OK)
     List<TurmaListResponse> findAllByAno(@PathVariable Integer ano);
 

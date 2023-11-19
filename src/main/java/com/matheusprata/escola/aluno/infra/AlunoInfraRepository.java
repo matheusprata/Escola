@@ -26,7 +26,7 @@ public class AlunoInfraRepository implements AlunoRepository {
         }catch (DataIntegrityViolationException e){
             throw APIException.build(HttpStatus.BAD_REQUEST, "Aluno já cadastrado", e);
         }
-        log.info("[inicia] AlunoInfraRepository - saveAluno");
+        log.info("[finaliza] AlunoInfraRepository - saveAluno");
         return aluno;
     }
 
@@ -48,10 +48,11 @@ public class AlunoInfraRepository implements AlunoRepository {
     }
 
     @Override
-    public Optional<Aluno> findByCpf(String cpf) {
+    public Aluno findByCpf(String cpf) {
         log.info("[inicia] AlunoInfraRepository - findByCpf");
-        Optional<Aluno> alunoOptional = alunoSpringDataJPARepository.findByCpf(cpf);
+        Aluno aluno = alunoSpringDataJPARepository.findByCpf(cpf)
+                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Aluno não encontrado!"));
         log.info("[finaliza] AlunoInfraRepository - findByCpf");
-        return alunoOptional;
+        return aluno;
     }
 }

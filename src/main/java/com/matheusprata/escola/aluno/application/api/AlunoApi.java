@@ -1,5 +1,6 @@
 package com.matheusprata.escola.aluno.application.api;
 
+import com.matheusprata.escola.turma.application.api.AlunoTurmaResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +11,10 @@ import java.util.List;
 @RequestMapping("/v1/aluno")
 public interface AlunoApi{
 
-    @PostMapping
+    @PostMapping(value = "/{idTurma}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    AlunoIdResponse saveAluno(@Valid @RequestBody AlunoRequest alunoRequest);
+    AlunoResponse saveAluno(@PathVariable Long idTurma
+            ,@Valid @RequestBody AlunoRequest alunoRequest);
 
     @GetMapping(value = "/all")
     @ResponseStatus(code = HttpStatus.OK)
@@ -21,6 +23,10 @@ public interface AlunoApi{
     @GetMapping(value = "/cpf")
     @ResponseStatus(code = HttpStatus.OK)
     AlunoResponse getByCpf(@RequestParam String cpf);
+
+    @GetMapping("/turma/{idTurma}")
+    @ResponseStatus(code = HttpStatus.OK)
+    AlunoTurmaResponse getAllAlunoByTurma(@PathVariable Long idTurma);
 
     @PatchMapping(value = "/cpf")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

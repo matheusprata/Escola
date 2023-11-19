@@ -3,7 +3,6 @@ package com.matheusprata.escola.aluno.application.api;
 import com.matheusprata.escola.aluno.domain.Aluno;
 import com.matheusprata.escola.aluno.domain.Sexo;
 import lombok.Value;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
