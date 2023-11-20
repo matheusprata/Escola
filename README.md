@@ -1,4 +1,4 @@
-# API cadastro sistema Escola
+# API Escola
 Sistema para cadastro de turma, professor, aluno e seu responsável.
 
 ### ✔️ Técnicas e tecnologias utilizadas
