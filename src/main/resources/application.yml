@@ -1,18 +1,13 @@
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+cors:
+  origins: http://localhost:5173,http://localhost:3000
+
 server:
   servlet:
     context-path: /escola/api
-
-spring:
-  datasource:
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/escola?createDatabaseIfNotExist=true
-    username: postgres
-    password: 852456
-  jpa:
-    generate-ddl: true
-    show-sql: true
-    hibernate:
-      ddl-auto: update
 
 springdoc:
   swagger-ui:
