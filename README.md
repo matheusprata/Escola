@@ -10,10 +10,9 @@ Sistema para cadastro de turma, professor, aluno e seu responsável.
 - ``PostgreSQL``
 - ``PGAdmin``
 - ``IntelliJ IDEA``
-- ``Postman - para teste da APi local e na cloud Railway``
-- ``Swagger - para teste da API local e na cloud Railway``
-- ``Git e GitHub - Cloud Sincronizando na branch dev a cada merge fazendo deploy``
-- ``Cloud Railway``
+- ``Postman - para teste da APi local``
+- ``Swagger - para teste da API local``
+- ``Git e GitHub``
 
 ### Clone Projeto
 ```
